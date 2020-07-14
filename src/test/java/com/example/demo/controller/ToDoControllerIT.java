@@ -116,6 +116,7 @@ public class ToDoControllerIT {
                 .andExpect(jsonPath("$.text").value(text));
     }
 
+    @Test
     public void whenGetOneWithIdNotFound() throws Exception {
         long id = 4124L;
 
