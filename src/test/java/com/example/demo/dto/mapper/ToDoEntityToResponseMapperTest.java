@@ -9,7 +9,6 @@ import java.time.ZonedDateTime;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.samePropertyValuesAs;
-import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class ToDoEntityToResponseMapperTest {
     @Test
