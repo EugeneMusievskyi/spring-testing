@@ -131,6 +131,13 @@ public class ToDoIT {
     }
 
     @Test
+    public void whenGetOneIdNotFound_thenThrow() throws Exception {
+        long id = Long.MIN_VALUE;
+        this.mockMvc.perform(get("/todos/" + id))
+                .andExpect(status().isNotFound());
+    }
+
+    @Test
     public void whenDeleteOne_thenEntityDeleted() throws Exception {
         var items = toDoRepository.findAll();
         long id = items.get(0).getId();
