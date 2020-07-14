@@ -1,6 +1,7 @@
 package com.example.demo.controller;
 
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -12,25 +13,19 @@ import com.example.demo.exception.ToDoNotFoundException;
 import com.example.demo.service.ToDoService;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.ExceptionHandler;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 
 @RestController
 public class ToDoController {
 
 	@Autowired
 	ToDoService toDoService;
-	
+
+	@ResponseStatus(HttpStatus.NOT_FOUND)
 	@ExceptionHandler({ ToDoNotFoundException.class })
 	public String handleException(Exception ex) {
 		return ex.getMessage();
 	}
-	
+
 	@GetMapping("/todos")
 	@Valid List<ToDoResponse> getAll() {
 		return toDoService.getAll();
